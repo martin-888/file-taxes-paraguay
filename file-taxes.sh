@@ -59,7 +59,7 @@ command -v xmllint >/dev/null 2>&1 || {
   exit 1; 
 }
 
-COOKIES_FILE=/temp/cookies.txt
+COOKIES_FILE=/tmp/cookies.txt
 
 URL_HOST="https://marangatu.set.gov.py"
 URL_BASE="$URL_HOST/eset"
