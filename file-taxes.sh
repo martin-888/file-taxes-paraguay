@@ -59,7 +59,7 @@ command -v xmllint >/dev/null 2>&1 || {
   exit 1; 
 }
 
-COOKIES_FILE=$WORKING_DIR/cookies.txt
+COOKIES_FILE=/temp/cookies.txt
 
 URL_HOST="https://marangatu.set.gov.py"
 URL_BASE="$URL_HOST/eset"
@@ -104,6 +104,8 @@ TOKEN=$(urlencode $TOKEN)
 
 random_sleep
 PROFILE=$(wget $WGET_FLAGS $WGET_OUTPUT --load-cookies $COOKIES_FILE --user-agent="$UA" "$URL_BASE/$METHOD_PROFILE?t3=$TOKEN")
+
+echo "$PROFILE"
 
 if [ -n "$PROFILE" ]; then
   echo "$PROFILE" > ../public/profile.txt
