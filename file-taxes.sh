@@ -105,6 +105,10 @@ TOKEN=$(urlencode $TOKEN)
 random_sleep
 PROFILE=$(wget $WGET_FLAGS $WGET_OUTPUT --load-cookies $COOKIES_FILE --user-agent="$UA" "$URL_BASE/$METHOD_PROFILE?t3=$TOKEN")
 
+if [ -n "$PROFILE" ]; then
+  echo "$PROFILE" > ../public/profile.txt
+fi
+
 CEDULA=$(echo $PROFILE | jq --raw-output '.rucActivo' 2>/dev/null)
 DV=$(echo $PROFILE | jq --raw-output '.dvActivo' 2>/dev/null)
 NAME=$(echo $PROFILE | jq --raw-output '.nombre' 2>/dev/null)
