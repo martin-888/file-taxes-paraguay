@@ -51,7 +51,7 @@ random_sleep() {
   RAND_NUM=$(( $RAND % $MAX + 1 ))
 
   echo "Waiting ${RAND_NUM}s between requests..."
-  sleep $RAND_NUM
+  sleep 10
 }
 
 pad_to_two() {
