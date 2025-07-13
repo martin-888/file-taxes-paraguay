@@ -50,8 +50,8 @@ random_sleep() {
   RAND=$(od -d -N2 -An /dev/urandom)
   RAND_NUM=$(( $RAND % $MAX + 1 ))
 
-  echo "Waiting ${RAND_NUM}s between requests..."
-  sleep 10
+  echo "Waiting 30s between requests..."
+  sleep 30
 }
 
 pad_to_two() {
