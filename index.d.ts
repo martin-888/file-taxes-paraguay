@@ -1,1 +1,1 @@
-export declare function fileTaxes(): Promise<boolean>;
+export declare function fileTaxes(): Promise<void>;
