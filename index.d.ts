@@ -1,1 +1,1 @@
-export declare function fileTaxes(): Promise<{ stdout: string; stderr: string }>; // resolves with output, rejects with { error, stdout, stderr }
+export declare function fileTaxes(): Promise<{ stdout: string[]; stderr: string[] }>; // resolves with output, rejects with { error, stdout, stderr }

@@ -6,15 +6,15 @@ function fileTaxes() {
 
   return new Promise((resolve, reject) => {
     const child = spawn('bash', [scriptPath]);
-    let stdout = '';
-    let stderr = '';
+    let stdout = [];
+    let stderr = [];
 
     child.stdout.on('data', (data) => {
-      stdout += data;
+      stdout = [...stdout, data.toString()];
       process.stdout.write(data);
     });
     child.stderr.on('data', (data) => {
-      stderr += data;
+      stderr = [...stderr, data.toString()];
       process.stderr.write(data);
     });
     child.on('close', (code) => {
