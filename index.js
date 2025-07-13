@@ -1,8 +1,8 @@
-import path from 'path';
-import { spawn } from 'child_process';
+const path = require('path');
+const { spawn } = require('child_process');
 
-export function fileTaxes() {
-  const scriptPath = path.join(__dirname, 'file-taxes.sh');;
+function fileTaxes() {
+  const scriptPath = path.join(__dirname, 'file-taxes.sh');
 
   return new Promise((resolve, reject) => {
     const child = spawn('bash', [scriptPath]);
@@ -21,3 +21,5 @@ export function fileTaxes() {
     });
   });
 }
+
+module.exports = { fileTaxes };
