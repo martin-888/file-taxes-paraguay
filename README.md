@@ -1,3 +1,35 @@
+# Node.js/JavaScript Integration
+
+This fork provides an npm package that adds a Node.js interface to the original Bash script, allowing you to run the tax filing process programmatically from JavaScript or TypeScript.
+
+```
+npm install martin-888/file-taxes-paraguay
+```
+
+```js
+const { fileTaxes } = require('file-taxes-paraguay');
+
+fileTaxes()
+  .then(({ stdout, stderr }) => {
+    console.log('Success:', stdout.join('\n'));
+  })
+  .catch(({ error, stdout, stderr }) => {
+    console.error('Error:', error);
+    console.error('STDOUT:', stdout.join('\n'));
+    console.error('STDERR:', stderr.join('\n'));
+  });
+```
+
+Type definitions are provided via `index.d.ts`:
+
+```ts
+export declare function fileTaxes(): Promise<{ stdout: string[]; stderr: string[] }>;
+```
+
+> **Note:** The Node.js wrapper uses the same environment variables and system dependencies as the original Bash script. You must have `jq` and `libxml2`/`libxml2-utils` installed, and configure your `.env` or `.env.local` as described above.
+
+---
+
 # Automatically file taxes in Paraguay
 As a Paraguay tax resident (having a Tax ID) you have to file VATs (form 211) once a month and sometimes even the summary of receipts (even if you never claimed any). This script files all necessary taxes for you (in case of VAT it files 0 guarani tax).
 
