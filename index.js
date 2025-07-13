@@ -14,7 +14,11 @@ function fileTaxes() {
       process.stderr.write(data);
     });
     child.on('close', (code) => {
-      resolve(code === 0);
+      if (code === 0) {
+        resolve();
+      } else {
+        reject(new Error(`Process exited with code ${code}`));
+      }
     });
     child.on('error', (err) => {
       reject(err);
