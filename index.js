@@ -1,6 +1,10 @@
 const path = require('path');
 const { spawn } = require('child_process');
 
+function processDataChunk(arr, data) {
+  return [...arr, ...data.toString().split('\n').filter(line => line.length > 0)];
+}
+
 function fileTaxes() {
   const scriptPath = path.join(__dirname, 'file-taxes.sh');
 
@@ -10,11 +14,11 @@ function fileTaxes() {
     let stderr = [];
 
     child.stdout.on('data', (data) => {
-      stdout = [...stdout, data.toString()];
+      stdout = processDataChunk(stdout, data);
       process.stdout.write(data);
     });
     child.stderr.on('data', (data) => {
-      stderr = [...stderr, data.toString()];
+      stderr = processDataChunk(stderr, data);
       process.stderr.write(data);
     });
     child.on('close', (code) => {
