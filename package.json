@@ -1,0 +1,20 @@
+{
+  "name": "file-taxes-paraguay",
+  "version": "1.0.0",
+  "description": "As a Paraguay tax resident (having a Tax ID) you have to file VATs (form 211) once a month and sometimes even the summary of receipts (even if you never claimed any). This script files all necessary taxes for you (in case of VAT it files 0 guarani tax).",
+  "homepage": "https://github.com/martin-888/file-taxes-paraguay#readme",
+  "bugs": {
+    "url": "https://github.com/martin-888/file-taxes-paraguay/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martin-888/file-taxes-paraguay.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

@@ -78,6 +78,8 @@ UA=$(head -$LINE $UA_FILE | tail -1)
 
 echo "Checking session..."
 
+WGET_OUTPUT="-qO-"
+
 HOME=$(wget $WGET_FLAGS $WGET_OUTPUT --load-cookies $COOKIES_FILE $URL_BASE)
 
 if echo $HOME | grep -q "/eset/logout"; then
@@ -104,12 +106,6 @@ TOKEN=$(urlencode $TOKEN)
 
 random_sleep
 PROFILE=$(wget $WGET_FLAGS $WGET_OUTPUT --load-cookies $COOKIES_FILE --user-agent="$UA" "$URL_BASE/$METHOD_PROFILE?t3=$TOKEN")
-
-echo "$PROFILE"
-
-if [ -n "$PROFILE" ]; then
-  echo "$PROFILE" > ../public/profile.txt
-fi
 
 CEDULA=$(echo $PROFILE | jq --raw-output '.rucActivo' 2>/dev/null)
 DV=$(echo $PROFILE | jq --raw-output '.dvActivo' 2>/dev/null)
