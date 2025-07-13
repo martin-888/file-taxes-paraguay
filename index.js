@@ -6,22 +6,26 @@ function fileTaxes() {
 
   return new Promise((resolve, reject) => {
     const child = spawn('bash', [scriptPath]);
+    let stdout = '';
+    let stderr = '';
 
     child.stdout.on('data', (data) => {
+      stdout += data;
       process.stdout.write(data);
     });
     child.stderr.on('data', (data) => {
+      stderr += data;
       process.stderr.write(data);
     });
     child.on('close', (code) => {
       if (code === 0) {
-        resolve();
+        resolve({ stdout, stderr });
       } else {
-        reject(new Error(`Process exited with code ${code}`));
+        reject({ error: new Error(`Process exited with code ${code}`), stdout, stderr });
       }
     });
     child.on('error', (err) => {
-      reject(err);
+      reject({ error: err, stdout, stderr });
     });
   });
 }
