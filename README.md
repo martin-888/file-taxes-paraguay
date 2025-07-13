@@ -26,7 +26,7 @@ Type definitions are provided via `index.d.ts`:
 export declare function fileTaxes(): Promise<{ stdout: string[]; stderr: string[] }>;
 ```
 
-> **Note:** The Node.js wrapper uses the same environment variables and system dependencies as the original Bash script. You must have `jq` and `libxml2`/`libxml2-utils` installed, and configure your `.env` or `.env.local` as described above.
+> **Note:** The Node.js wrapper uses the same environment variables and system dependencies as the original Bash script. You must have `jq` and `libxml2`/`libxml2-utils` installed, and configure your `.env` or `.env.local` as described below.
 
 ---
 
